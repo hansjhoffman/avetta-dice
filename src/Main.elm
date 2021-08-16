@@ -1,7 +1,8 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, h1, text)
+import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Random
 
@@ -51,13 +52,155 @@ update msg model =
 -- VIEW
 
 
+drawDice : Model -> Html msg
+drawDice model =
+    case model of
+        1 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                ]
+
+        2 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                ]
+
+        3 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                ]
+
+        4 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                ]
+
+        5 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot" ] []
+                    ]
+                ]
+
+        6 ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot" ] []
+                    , div [ class "dot" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot" ] []
+                    , div [ class "dot" ] []
+                    , div [ class "dot" ] []
+                    ]
+                ]
+
+        _ ->
+            div [ class "dice" ]
+                [ div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                , div [ class "row" ]
+                    [ div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    , div [ class "dot-hide" ] []
+                    ]
+                ]
+
+
 view : Model -> Browser.Document Msg
 view model =
     { title = "Avetta Dice"
     , body =
-        [ div []
-            [ div [] [ text (String.fromInt model) ]
-            , button [ onClick Roll ] [ text "Roll" ]
+        [ div [ class "app" ]
+            [ div [ class "page-title" ]
+                [ h1 [] [ text "Hello Avetta" ]
+                ]
+            , div [ class "spacer-md" ] []
+            , drawDice model
+            , div [ class "spacer-sm" ] []
+            , button [ class "roll-btn", onClick Roll ] [ text "Roll" ]
             ]
         ]
     }

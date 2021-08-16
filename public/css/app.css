@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: inherit;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+:root {
+  --theme-background: #27212e;
+  --theme-foreground: #ffffff;
+  --theme-african-violet: #b381c5;
+  --border-radius-lg: 12px;
+  --border-radius-md: 8px;
+  --border-radius-sm: 4px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: var(--theme-background);
+  color: var(--theme-foreground);
+}
+
+.page-title {
+  font-size: 3rem;
+}
+
+.spacer-sm {
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
+
+.spacer-md {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
+
+.dice {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid var(--theme-african-violet);
+  border-radius: var(--border-radius-lg);
+  width: 150px;
+  height: 150px;
+  padding: 20px;
+}
+
+.roll-btn {
+  border-radius: var(--border-radius-sm);
+  font-size: 1.6rem;
+  padding: 0.25em;
+  width: 100px;
+  background-color: #eb64b9;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: var(--theme-african-violet);
+}
+
+.dot-hide {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

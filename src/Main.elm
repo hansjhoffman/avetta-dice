@@ -3,15 +3,11 @@ module Main exposing (..)
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
+import Random
 
 
 
 -- MODEL
-
-
-type Msg
-    = Increment
-    | Decrement
 
 
 type alias Model =
@@ -36,14 +32,19 @@ subscriptions _ =
 -- UPDATE
 
 
+type Msg
+    = Roll
+    | NewFace Int
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Increment ->
-            ( model + 1, Cmd.none )
+        Roll ->
+            ( model, Random.generate NewFace (Random.int 1 6) )
 
-        Decrement ->
-            ( model - 1, Cmd.none )
+        NewFace newFace ->
+            ( newFace, Cmd.none )
 
 
 
@@ -55,9 +56,8 @@ view model =
     { title = "Avetta Dice"
     , body =
         [ div []
-            [ button [ onClick Decrement ] [ text "-" ]
-            , div [] [ text (String.fromInt model) ]
-            , button [ onClick Increment ] [ text "+" ]
+            [ div [] [ text (String.fromInt model) ]
+            , button [ onClick Roll ] [ text "Roll" ]
             ]
         ]
     }

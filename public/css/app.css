@@ -69,7 +69,7 @@ button {
   border-radius: var(--border-radius-lg);
   width: 150px;
   height: 150px;
-  padding: 20px;
+  padding: 40px;
 }
 
 .roll-btn {

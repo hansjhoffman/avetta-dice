@@ -13,3 +13,6 @@ dist
 .DS_Store
 .env*
 .nix-*
+
+# Local Netlify folder
+.netlify

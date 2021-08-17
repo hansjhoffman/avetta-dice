@@ -30,6 +30,8 @@ button {
   --theme-background: #27212e;
   --theme-foreground: #ffffff;
   --theme-african-violet: #b381c5;
+  --theme-hot-pink: #eb64b9;
+  --theme-white: #ffffff;
   --border-radius-lg: 12px;
   --border-radius-md: 8px;
   --border-radius-sm: 4px;
@@ -75,7 +77,8 @@ button {
   font-size: 1.6rem;
   padding: 0.25em;
   width: 100px;
-  background-color: #eb64b9;
+  background-color: var(--theme-hot-pink);
+  color: var(--theme-white);
 }
 
 .dot {

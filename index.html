@@ -10,16 +10,10 @@
     <title>Avetta Dice</title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
-    <link rel="stylesheet" href="css/app.css" />
-    <script src="js/elm.js"></script>
   </head>
 
   <body>
-    <div id="elm-node" />
-    <script>
-      const app = Elm.Main.init({
-        node: document.getElementById("elm-node"),
-      });
-    </script>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>

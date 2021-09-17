@@ -4,11 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "deploy": "netlify deploy --prod"
+    "build": "make build",
+    "deploy": "netlify deploy --prod",
+    "prepare": "husky install",
+    "preview": "make preview",
+    "start": "make run"
   },
   "devDependencies": {
-    "elm-live": "^4.0.2",
-    "netlify-cli": "^6.5.1",
-    "prettier": "^2.3.2"
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "netlify-cli": "^6.9.6",
+    "prettier": "^2.4.1",
+    "vite": "^2.5.8",
+    "vite-plugin-elm": "^2.5.0"
+  },
+  "lint-staged": {
+    "css/*.{css,scss}": [
+      "prettier --write"
+    ],
+    "**/*.elm": [
+      "elm-format --yes",
+      "elm-review --fix-all"
+    ]
   }
 }

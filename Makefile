@@ -46,6 +46,17 @@ build: ## Make a production build
 deps: ## Install all dependencies
 	yarn install
 
+.PHONY: preview
+preview: build ## See what the production build will look like
+	yarn vite preview --https
+
+.PHONY: run
+run: ## Run web app
+	yarn vite --https
+
+# Check, lint, format and test targets
+# ------------------------------------
+
 .PHONY: format
 format: format-css format-elm ## Format everything
 
@@ -57,10 +68,10 @@ format-css: ## Format stylesheets
 format-elm: ## Format elm
 	elm-format src/ --yes
 
-.PHONY: preview
-preview: build ## See what the production build will look like
-	yarn vite preview --https
+.PHONY: lint
+lint: ## Lint elm files
+	elm-review
 
-.PHONY: run
-run: ## Run web app
-	yarn vite --https
+.PHONY: lint-elm
+lint-fix: ## Lint fix all elm files
+	elm-review --fix-all

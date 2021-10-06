@@ -6,12 +6,16 @@
   "scripts": {
     "build": "make build",
     "deploy": "netlify deploy --prod",
-    "prepare": "husky install",
+    "format": "make format",
+    "lint": "make lint",
+    "lint:fix": "make lint-fix",
+    "prepare": "is-ci || husky install",
     "preview": "make preview",
     "start": "make run"
   },
   "devDependencies": {
     "husky": "^7.0.2",
+    "is-ci": "^3.0.0",
     "lint-staged": "^11.1.2",
     "netlify-cli": "^6.9.6",
     "prettier": "^2.4.1",
@@ -23,8 +27,7 @@
       "prettier --write"
     ],
     "**/*.elm": [
-      "elm-format --yes",
-      "elm-review --fix-all"
+      "elm-format --yes"
     ]
   }
 }

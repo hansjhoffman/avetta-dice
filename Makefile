@@ -62,7 +62,7 @@ format: format-css format-elm ## Format everything
 
 .PHONY: format-css
 format-css: ## Format stylesheets
-	yarn prettier --write 'public/css/*.{css,scss}'
+	yarn prettier --write 'css/*.{css,scss}'
 
 .PHONY: format-elm
 format-elm: ## Format elm

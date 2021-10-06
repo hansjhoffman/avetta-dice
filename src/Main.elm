@@ -7,17 +7,36 @@ import Html.Events as Events
 import Random
 
 
+type FaceValue
+    = One
+    | Two
+    | Three
+    | Four
+    | Five
+    | Six
+
+
+oneToSix : Random.Generator FaceValue
+oneToSix =
+    Random.uniform One [ Two, Three, Four, Five, Six ]
+
+
+roll : Cmd Msg
+roll =
+    Random.generate NewFace oneToSix
+
+
 
 -- MODEL
 
 
 type alias Model =
-    Int
+    FaceValue
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( 1, Cmd.none )
+    ( One, Cmd.none )
 
 
 
@@ -35,14 +54,14 @@ subscriptions _ =
 
 type Msg
     = Roll
-    | NewFace Int
+    | NewFace FaceValue
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Roll ->
-            ( model, Random.generate NewFace (Random.int 1 6) )
+            ( model, roll )
 
         NewFace newFace ->
             ( newFace, Cmd.none )
@@ -55,7 +74,7 @@ update msg model =
 drawDice : Model -> Html msg
 drawDice model =
     case model of
-        1 ->
+        One ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot-hide" ] []
@@ -74,7 +93,7 @@ drawDice model =
                     ]
                 ]
 
-        2 ->
+        Two ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot" ] []
@@ -93,7 +112,7 @@ drawDice model =
                     ]
                 ]
 
-        3 ->
+        Three ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot" ] []
@@ -112,7 +131,7 @@ drawDice model =
                     ]
                 ]
 
-        4 ->
+        Four ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot" ] []
@@ -131,7 +150,7 @@ drawDice model =
                     ]
                 ]
 
-        5 ->
+        Five ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot" ] []
@@ -150,7 +169,7 @@ drawDice model =
                     ]
                 ]
 
-        6 ->
+        Six ->
             div [ Attr.class "dice" ]
                 [ div [ Attr.class "row" ]
                     [ div [ Attr.class "dot" ] []
@@ -166,25 +185,6 @@ drawDice model =
                     [ div [ Attr.class "dot" ] []
                     , div [ Attr.class "dot" ] []
                     , div [ Attr.class "dot" ] []
-                    ]
-                ]
-
-        _ ->
-            div [ Attr.class "dice" ]
-                [ div [ Attr.class "row" ]
-                    [ div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
-                    ]
-                , div [ Attr.class "row" ]
-                    [ div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
-                    ]
-                , div [ Attr.class "row" ]
-                    [ div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
-                    , div [ Attr.class "dot-hide" ] []
                     ]
                 ]
 
